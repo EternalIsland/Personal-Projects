@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module>
+    <entry-point class="com.eternalisland.infinitearmada.client.GwtLauncher"/>
+    <set-configuration-property name="gdx.assetpath" value="../Infinite_Armada-android/assets"/>
+    <inherits name="Infinite_Armada"/>
+    <inherits name="aurelienribon.tweenengine"/>
+    <inherits name="com.badlogic.gdx.backends.gdx_backends_gwt"/>
+</module>

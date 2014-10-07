@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;com.eternalisland.infinitearmada.actors.Enemy.setDamage(...)&apos; to &apos;setDamageTaken&apos;&#x0D;&#x0A;- Original project: &apos;Infinite_Armada&apos;&#x0D;&#x0A;- Original element: &apos;com.eternalisland.infinitearmada.actors.Enemy.setDamage(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;com.eternalisland.infinitearmada.actors.Enemy.setDamageTaken(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;setDamage&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;com.eternalisland.infinitearmada.actors{Enemy.java[Enemy~setDamage~I" name="setDamageTaken" references="true" stamp="1391960332827" version="1.0"/>
+</session>

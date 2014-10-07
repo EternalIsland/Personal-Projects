@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 4 resources" deleteContents="false" description="Delete 4 resources" element1="/Infinite_Armada" element2="/Infinite_Armada-android" element3="/Infinite_Armada-desktop" element4="/Infinite_Armada-html" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="4" stamp="1375304218233"/>
+</session>

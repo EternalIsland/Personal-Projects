@@ -1,0 +1,33 @@
+
+gameships.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+boss
+  rotate: false
+  xy: 1, 2
+  size: 200, 245
+  orig: 200, 245
+  offset: 0, 0
+  index: -1
+shooter
+  rotate: false
+  xy: 203, 115
+  size: 128, 132
+  orig: 128, 132
+  offset: 0, 0
+  index: -1
+tank
+  rotate: false
+  xy: 333, 131
+  size: 128, 116
+  orig: 128, 116
+  offset: 0, 0
+  index: -1
+flyer
+  rotate: false
+  xy: 333, 1
+  size: 125, 128
+  orig: 125, 128
+  offset: 0, 0
+  index: -1
