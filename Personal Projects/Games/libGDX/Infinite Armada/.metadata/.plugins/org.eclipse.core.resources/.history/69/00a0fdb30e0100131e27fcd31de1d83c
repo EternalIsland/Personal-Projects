@@ -1,0 +1,79 @@
+package com.eternalisland.infinitearmada.actors;
+
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+public class Enemy extends Actor {
+
+	private static final int ENEMY_WIDTH = 56;
+	private static final int ENEMY_HEIGHT = 64;
+	Vector2 position;
+	Sprite sprite;
+	TextureAtlas atlas;
+	int velocity;
+
+	public Enemy(float x, float y) {
+		this.setBounds(0, 0, ENEMY_WIDTH, ENEMY_HEIGHT);
+		this.position = new Vector2(x, y);
+		this.velocity = 1;
+		this.atlas = new TextureAtlas("images/ships.pack");
+		this.sprite = atlas.createSprite("enemy");
+	}
+
+	@Override
+	public void draw(SpriteBatch batch, float parentAlpha) {
+		// TODO Auto-generated method stub
+		sprite.setColor(1, 1, 1, parentAlpha);
+		sprite.draw(batch);
+	}
+
+	@Override
+	public void act(float delta) {
+		// TODO Auto-generated method stub
+		super.act(delta);
+
+		// position.x += velocity;
+		position.y -= velocity;
+
+		sprite.setPosition(position.x, position.y);
+	}
+
+	public static int getEnemyWidth() {
+		return ENEMY_WIDTH;
+	}
+
+	public static int getEnemyHeight() {
+		return ENEMY_HEIGHT;
+	}
+
+	public void setVelocity(int velocity) {
+		this.velocity = velocity;
+	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(Sprite sprite) {
+		this.sprite = sprite;
+	}
+
+	public int getVelocity() {
+		return velocity;
+	}
+
+	public void dispose() {
+		atlas.dispose();
+	}
+
+	public void collisionPlayerEnemy(Player player) {
+		if (player.getSprite().getBoundingRectangle()
+				.overlaps(enemy.getSprite().getBoundingRectangle())) {
+			enemy.dispose();
+		}
+	}
+
+}

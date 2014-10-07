@@ -1,0 +1,135 @@
+package com.eternalisland.infinitearmada.actors;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Array;
+
+public class Enemy extends Actor {
+
+	final int ENEMY_WIDTH, ENEMY_HEIGHT;
+	static final int SCREEN_HEIGHT = Gdx.graphics.getHeight();
+	static final int SCREEN_WIDTH = Gdx.graphics.getWidth();
+	int dmg_amt;
+	Vector2 position;
+	Sprite sprite;
+	TextureAtlas atlas;
+	double velocity;
+	Player player;
+	int health;
+	private int playerDamage;
+
+	public Enemy(float x, float y, Player player, int ENEMY_WIDTH,
+			int ENEMY_HEIGHT) {
+
+		this.ENEMY_WIDTH = ENEMY_WIDTH;
+		this.ENEMY_HEIGHT = ENEMY_HEIGHT;
+
+		if (x + ENEMY_WIDTH > Gdx.graphics.getWidth()) {
+			x = Gdx.graphics.getWidth() - ENEMY_WIDTH;
+		} else if (x + ENEMY_WIDTH < 0) {
+			x = ENEMY_WIDTH;
+		}
+
+		this.setBounds(0, 0, ENEMY_WIDTH, ENEMY_HEIGHT);
+		this.position = new Vector2(x, y);
+		this.atlas = new TextureAtlas("images/gameships.pack");
+		this.player = player;
+		this.health = 100;
+	}
+
+	@Override
+	public void draw(SpriteBatch batch, float parentAlpha) {
+		sprite.setColor(1, 1, 1, parentAlpha);
+		sprite.draw(batch);
+	}
+
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+
+		position.y -= velocity;
+
+		sprite.setPosition(position.x, position.y);
+
+		if (position.y < 0) {
+			this.remove();
+			this.dispose();
+		}
+
+		collisionPlayerEnemy(player);
+		collisonEnemyBullet(player.bulletList());
+	}
+
+	public int getEnemyWidth() {
+		return this.ENEMY_WIDTH;
+	}
+
+	public int getEnemyHeight() {
+		return this.ENEMY_HEIGHT;
+	}
+
+	public void setVelocity(int velocity) {
+		this.velocity = velocity;
+	}
+
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(Sprite sprite) {
+		this.sprite = sprite;
+	}
+
+	public double getVelocity() {
+		return velocity;
+	}
+
+	public void dispose() {
+		atlas.dispose();
+	}
+
+	public void collisionPlayerEnemy(Player player) {
+		if (player.getSprite().getBoundingRectangle()
+				.overlaps(sprite.getBoundingRectangle())) {
+			this.remove();
+
+			player.changeHealth(-playerDamage);
+			System.out.println(player.health);
+		}
+	}
+
+	public void collisonEnemyBullet(Array<Bullet> bullets) {
+		for (Bullet b : bullets) {
+			if (b.getSprite().getBoundingRectangle()
+					.overlaps(sprite.getBoundingRectangle())) {
+				this.health -= dmg_amt;
+				bullets.removeValue(b, true);
+				System.out.println(this.health);
+
+				if (this.health <= 0) {
+					this.remove();
+					bullets.removeValue(b, true);
+					player.changeScore(50);
+				}
+			}
+		}
+
+	}
+
+	public void setDamageTaken(int amount) {
+		this.dmg_amt = amount;
+	}
+
+	public void setPlayerDamage(int dmg) {
+		this.playerDamage = dmg;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+}

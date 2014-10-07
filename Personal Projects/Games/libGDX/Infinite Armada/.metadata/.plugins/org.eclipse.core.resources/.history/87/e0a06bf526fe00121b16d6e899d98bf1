@@ -1,0 +1,48 @@
+package com.eternalisland.infinitearmada.actors;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+public class Bullet {
+
+	Texture texture;
+	Sprite sprite;
+	static Vector2 position;
+	int velocity;
+
+	public Bullet(float x, float y) {
+		this.texture = new Texture("images/bullet.png");
+		this.sprite = new Sprite(texture);
+		Bullet.position = new Vector2(x, y);
+		this.setBounds(0, 0, sprite.getWidth(), sprite.getHeight());
+		sprite.scale(3);
+		this.velocity = 5;
+	}
+	public void update) {
+
+		position.y += velocity;
+
+		sprite.setPosition(position.x, position.y);
+	}
+
+	public void draw(SpriteBatch batch, float parentAlpha) {
+		sprite.setColor(1, 1, 1, parentAlpha);
+		sprite.draw(batch);
+	}
+
+	public void dispose() {
+		texture.dispose();
+	}
+
+	public Vector2 getPosition() {
+		return position;
+	}
+
+	public void setPosition(Vector2 position) {
+		Bullet.position = position;
+	}
+
+}

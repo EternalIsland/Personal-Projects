@@ -1,0 +1,138 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true" >
+
+        <TextView
+            android:id="@+id/genderTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/gender_"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/drinkTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/drinkSpin"
+            android:layout_below="@+id/genderRadGrp"
+            android:layout_marginTop="40dp"
+            android:text="@string/type_of_drink_"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/genderRadGrp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/genderTv"
+            android:layout_below="@+id/genderTv"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/maleRad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/femaleRad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/drinkSpin"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/genderRadGrp"
+            android:layout_below="@+id/drinkTv" />
+
+        <EditText
+            android:id="@+id/weightEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/timeEt"
+            android:layout_below="@+id/weightTv"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/weightEt"
+            android:layout_below="@+id/weightEt"
+            android:layout_marginTop="40dp"
+            android:text="@string/hours_since_first_drink"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/timeEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/weightTv"
+            android:layout_below="@+id/timeTv"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/drinkAmountEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/drinkSpin"
+            android:layout_below="@+id/drinkSpin"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/weightTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/drinkAmountEt"
+            android:layout_below="@+id/drinkAmountEt"
+            android:layout_marginTop="40dp"
+            android:text="@string/weight_"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/calcButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeEt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:text="@string/calculate" />
+
+        <requestFocus />
+
+        <EditText
+            android:id="@+id/customAbvEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/drinkSpin"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@+id/drinkTv"
+            android:ems="5"
+            android:hint="@string/enter_abv"
+            android:inputType="numberDecimal" 
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,37 @@
+package com.eternalisland.infinitearmada.actors;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+public class Bullet extends Actor {
+
+	Texture texture;
+	Sprite sprite;
+	Vector2 position;
+
+	public Bullet(float x, float y) {
+		this.texture = new Texture("images/bullet.png");
+		this.sprite = new Sprite(texture);
+		position.x = x;
+		position.y = y;
+		this.setBounds(0, 0, sprite.getWidth(), sprite.getHeight());
+	}
+
+	@Override
+	public void act(float delta) {
+		// TODO Auto-generated method stub
+		super.act(delta);
+
+		sprite.setPosition(position);
+	}
+
+	public void draw() {
+
+	}
+
+	public void dispose() {
+
+	}
+}
